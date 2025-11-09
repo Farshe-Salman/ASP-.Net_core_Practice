@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<a class="btn btn-danger" href="/student/index">Index</a>
+<a class="btn btn-success" href="/student/create">Create</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        <td>22-49844-3</td>
+        <td>@ViewBag.S1F</td>
+        <td>@ViewBag.S1L</td>
+        <td>@ViewBag.S1E</td>
+    </tr>
+
+    <tr>
+        <td>22-49844-3</td>
+        <td>@ViewBag.S2F</td>
+        <td>@ViewBag.S2L</td>
+        <td>@ViewBag.S2E</td>
+    </tr>
+
+</table>
+
+@for(int i=0; i<5; i++)
+{
+      <p>@i</p>
+}
+
+
+
