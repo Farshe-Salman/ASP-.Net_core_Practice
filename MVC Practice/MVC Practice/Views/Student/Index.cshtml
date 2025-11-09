@@ -5,6 +5,11 @@
 
 <a class="btn btn-danger" href="/student/index">Index</a>
 <a class="btn btn-success" href="/student/create">Create</a>
+<a class="btn btn-secondary" href="/student/login">Login</a>
+<a class="btn btn-warning" href="/student/Aiub">Aiub</a>
+<a class="btn btn-outline-success" style="background-color: blue; color: white;" href="/student/details">Details</a>
+<a class="btn btn-outline-success" style="background-color: seagreen; color: white;" href="/student/HomeIndex">Home Index</a>
+
 
 <table class="table table-bordered">
     <tr>
@@ -27,12 +32,16 @@
         <td>@ViewBag.S2E</td>
     </tr>
 
+    <tr>
+        <td>23-52246-2</td>
+        <td>@ViewData["S3f"]</td>
+        <td>@ViewData["S3L"]</td>
+        <td>@ViewData["S3E"]</td>
+    </tr>
+
 </table>
 
-@for(int i=0; i<5; i++)
-{
-      <p>@i</p>
-}
+
 
 
 
