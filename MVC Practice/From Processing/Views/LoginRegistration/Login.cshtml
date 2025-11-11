@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+@*<h1>@Request["UserName"]</h1>*@
+
+@*<h1>@ViewBag.UserName</h1>
+    <h2>@ViewBag.Password</h2>*@
+
+@if (ViewBag.Msg != null)
+{
+    <p>@ViewBag.Msg</p>
+}
+
+<h4>hi</h4>
+
+<h2>User Login</h2>
+
+<form action="" method="post">
+    <input type="text" class="form-control" placeholder="Username" name="UserName" value="@Model.Username" />
+    <span class="text-danger">@Html.ValidationMessage("Username")</span>
+
+    <input type="password" class="form-control" placeholder="password" name="Password" />
+    <span class="text-danger">@Html.ValidationMessage("Password")</span><br />
+
+    <input type="submit" value="Login" class="btn btn-primary" />
+</form>
