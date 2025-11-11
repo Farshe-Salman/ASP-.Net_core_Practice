@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Craete your account</h2>
+
+<form action="" method="post">
+    <input type="text" class="form-control" name="Name" placeholder="Name" />
+    <span class="text-danger">@Html.ValidationMessage("Name")</span>
+
+    <input type="text" class="form-control" name="UserName" placeholder="User Name" />
+    <span class="text-danger">@Html.ValidationMessage("UserName")</span>
+
+    <input type="text" class="form-control" name="ID" placeholder="ID" />
+    <span class="text-danger">@Html.ValidationMessage("ID")</span>
+
+    <input type="date" class="form-control" name="DOB" placeholder="Date of Birth" />
+    <span class="text-danger">@Html.ValidationMessage("DOB")</span>
+
+    <input type="email" class="form-control" name="email" placeholder="Email" />
+    <span class="text-danger">@Html.ValidationMessage("Email")</span> <br />
+
+    <input type="submit" value="Register" class="btn btn-primary m-l-10" />
+
+</form>

@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Form_Validation__Built_in_and_custom_both_.Models;
+
+namespace Form_Validation__Built_in_and_custom_both_.Controllers
+{
+    public class FormValidationController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Registration()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registration(Registration registration)
+        {
+
+            return View();
+        }
+    }
+}
