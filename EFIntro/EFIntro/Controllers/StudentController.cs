@@ -1,4 +1,5 @@
-﻿using EFIntro.EF;
+﻿using Antlr.Runtime.Tree;
+using EFIntro.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,17 +34,39 @@ namespace EFIntro.Controllers
 
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            return View();
+            var data= db.Students.Find(id);
+            return View(data);
         }
-        public ActionResult Update()
+
+        [HttpGet]
+        public ActionResult Update(int id)
         {
-            return View();
+            var data = db.Students.Find(id);
+            return View(data);
         }
-        public ActionResult Delete()
+
+        [HttpPost]
+        public ActionResult Update(Student student)
         {
-            return View();
+            var editData = db.Students.Find(student.ID);
+            editData.Name = student.Name;
+            editData.Age = student.Age;
+            editData.Department = student.Department;
+            db.SaveChanges();
+            TempData["msg"] = "Student Updated Successfully";
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            var data = db.Students.Find(id);
+            db.Students.Remove(data);
+            db.SaveChanges();
+            TempData["msg"] = "Student Deleted Successfully";
+            return RedirectToAction("Index");
         }
     }
 }

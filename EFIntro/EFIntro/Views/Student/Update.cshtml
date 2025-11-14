@@ -3,5 +3,13 @@
     ViewBag.Title = "Update";
 }
 
-<h2>Update</h2>
+<h2>Update your Profile</h2>
+
+<form action="" method="post">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <input type="text" name="Name" class="form form-control" value="@Model.Name" /><br />
+    <input type="number" name="Age" class="form form-control" value="@Model.Age" /><br />
+    <input type="text" name="Department" class="form form-control" value="@Model.Department" /><br />
+    <input type="submit" class="btn btn-primary" value="Update" />
+</form>
 
