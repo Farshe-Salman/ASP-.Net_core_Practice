@@ -18,6 +18,7 @@ namespace EFIntro.Controllers
         }
 
 
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -68,5 +69,22 @@ namespace EFIntro.Controllers
             TempData["msg"] = "Student Deleted Successfully";
             return RedirectToAction("Index");
         }
+
+        public ActionResult Search(string id)
+        {
+            var data = (from s in db.Students
+                        where s.Name.Contains(id)
+                        select s).ToList();
+
+            return View(data);
+                        
+        }
+
+        public ActionResult StudentList()
+        {
+            var data= db.Students.Find(1);
+            return View(data);
+        }
+
     }
 }

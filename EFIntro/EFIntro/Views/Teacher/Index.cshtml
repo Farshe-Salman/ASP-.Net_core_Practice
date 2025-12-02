@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 class="text-center">Teacher List</h1>
+@if (TempData["Msg"] != null)
+            {
+                <p class="alert alert-secondary">@TempData["Msg"]</p>
+            }
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Room No</th>
+    </tr>
+
+    @foreach (var item in Model)
+      {
+            <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Department</td>
+                    <td>@item.Room_No</td>   
+                    <td>
+                        <a class="btn btn-secondary" href="/Teacher/About/@item.ID">Details</a>
+                        <a class="btn btn-primary" href="/Teacher/Update">Update</a>
+                        <a class="btn btn-danger" href="/Teacher/Delete">Delete</a>
+                     </td>
+            </tr>
+
+
+     }
+</table>
+

@@ -25,6 +25,9 @@ namespace EFIntro.EF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
     }
 }

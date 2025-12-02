@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="/ST/Search">
+    <input type="text" name="ID" placeholder="seach" />
+    <input type="submit" name="Search" value="Search" />
+</form>
+<table class="table-bordered table">
+    <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Department</td>
+        <td>DeptID</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Age</td>
+            <td>@item.Department</td>
+            <td>@item.DeptID</td>
+            <td>
+                <a class="btn btn-danger" href="/ST/Delete/@item.ID">Delete</a>
+                <a class="btn btn-danger" href="/ST/Details/@item.ID">Details</a>
+                <a class="btn btn-danger" href="/ST/Update/@item.ID">Update</a>
+            </td>
+        </tr>
+    }
+</table>
+

@@ -14,6 +14,10 @@
 
 @if (Model.Count > 0)
 {
+    <form action="/Student/Index">
+        <input type="text" name="id" placeholder="Search" />
+        <input type="submit" value="Search" class="btn btn-info" />
+    </form>
     <table class="table table-bordered">
         <tr>
             <th>Name</th>
