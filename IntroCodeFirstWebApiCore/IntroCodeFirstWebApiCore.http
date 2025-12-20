@@ -1,0 +1,6 @@
+@IntroCodeFirstWebApiCore_HostAddress = http://localhost:5129
+
+GET {{IntroCodeFirstWebApiCore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
