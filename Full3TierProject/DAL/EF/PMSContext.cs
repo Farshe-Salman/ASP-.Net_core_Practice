@@ -15,5 +15,8 @@ namespace DAL.EF
 
         public DbSet<Models.CategoryService> Categories { get; set; }
 
+        public DbSet<Models.User> Users { get; set; }
+
+
     }
 }

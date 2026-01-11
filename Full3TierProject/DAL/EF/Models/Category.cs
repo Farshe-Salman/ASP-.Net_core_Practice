@@ -17,7 +17,5 @@ namespace DAL.EF.Models
         [Column(TypeName = "VARCHAR")]
         public string Name { get; set; }
 
-
-
     }
 }
