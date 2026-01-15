@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using BLL.DTOs;
 using BLL.Services;
-using Microsoft.AspNetCore.Mvc;
 
 namespace APIApp.Controllers
 {
@@ -14,12 +13,22 @@ namespace APIApp.Controllers
 
         public AuthController(AuthService service)
         {
-            this.service = service;
+            this.service = service;            
         }
 
         [HttpPost("signup")]
         public IActionResult Signup(RegisterDTO dto)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if(dto.Role != "Shopkeeper" && dto.Role != "Customer")
+            {
+                return BadRequest("Role must be either 'Shopkeeper' or 'Customer'");
+            }
+
             var res = service.Register(dto);
             return res ? Ok("User Created") : BadRequest("User Not Created");
         }

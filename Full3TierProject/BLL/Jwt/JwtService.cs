@@ -14,11 +14,12 @@ namespace BLL.Jwt
     {
         string key = "THIS_IS_MY_SUPER_SECRET_KEY_12345";
 
-        public string GenerateToken(string username)
+        public string GenerateToken(string username, string role)
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, username)
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Role, role)
             };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
@@ -26,16 +27,16 @@ namespace BLL.Jwt
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddHours(1),
+                expires: DateTime.Now.AddMinutes(10),
                 signingCredentials: credentials
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public SymmetricSecurityKey GetKey()
-        {
-            return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-        }
+        //public SymmetricSecurityKey GetKey()
+        //{
+        //    return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+        //}
     }
 }

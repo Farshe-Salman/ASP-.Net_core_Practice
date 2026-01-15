@@ -8,7 +8,7 @@ using BLL.Jwt;
 using DAL.EF.Models;
 using DAL.Repos;
 using System.Security.Cryptography;
-using System.Text;
+using BCrypt.Net;
 
 namespace BLL.Services
 {
@@ -23,18 +23,14 @@ namespace BLL.Services
             this.jwt = jwt;
         }
 
-        string Hash(string input)
-        {
-            using var sha = SHA256.Create();
-            return Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(input)));
-        }
-
         public bool Register(RegisterDTO dto)
         {
             var user = new User
             {
                 Username = dto.Username,
-                Password = Hash(dto.Password)
+                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+                Role = dto.Role,
+                Email = dto.Email
             };
             return repo.Create(user);
         }
@@ -44,9 +40,10 @@ namespace BLL.Services
             var user = repo.Get(dto.Username);
             if (user == null) return null;
 
-            if (user.Password != Hash(dto.Password)) return null;
+            if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password)) 
+                return null;
 
-            return jwt.GenerateToken(user.Username);
+            return jwt.GenerateToken(user.Username, user.Role);
         }
     }
 }

@@ -9,23 +9,27 @@ namespace APIApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    [Authorize]
     public class CategoryController : ControllerBase
     {
         CategoryService service;
         public CategoryController(CategoryService service){
             this.service = service;
         }
+
         [HttpGet("all")]
         public IActionResult All(){  
             var data = service.Get();
             return Ok(data);
         }
+
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id){
             var data = service.Get(id);
             return Ok(data);
         }
+
+        [Authorize(Roles = "Shopkeeper")]
         [HttpPost("create")] 
         public IActionResult Create(CategoryDTO c)
         {
@@ -40,6 +44,8 @@ namespace APIApp.Controllers
             }
         }
 
+
+        [Authorize(Roles = "Shopkeeper")]
         [HttpPost("update")]
         public IActionResult Update(CategoryDTO c)
         {
@@ -54,6 +60,8 @@ namespace APIApp.Controllers
             }
         }
 
+
+        [Authorize(Roles = "Shopkeeper")]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id){
             var data = service.Delete(id);
