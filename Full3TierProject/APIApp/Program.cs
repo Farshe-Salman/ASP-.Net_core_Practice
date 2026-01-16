@@ -37,7 +37,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 
 
-builder.Services.AddScoped<CategoryRepo>();
+//builder.Services.AddScoped<CategoryRepo>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddDbContext<PMSContext>(Opt =>
 {
